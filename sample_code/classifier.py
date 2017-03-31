@@ -23,7 +23,7 @@ class Classifier(BaseEstimator):
         print("Entrainement terminé !")
     
     def fitRF(self, X, y):
-        print("Entrainement avec la méthode 'RandomForest'... ")
+        print("Entrainement avec la méthode 'RandomForest'... ") #ECRIRE FONCTION PERMETTANT DE CHOISIR LE MEILLEUR HYPERPARAMETRE
             estimator = RandomForestClassifier(n_estimators=225, criterion='gini', max_depth=110, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None, min_impurity_split=1e-07, bootstrap=True, oob_score=False, n_jobs=1, random_state=None, verbose=0, warm_start=False, class_weight=None)
         self.clf =  CalibratedClassifierCV(base_estimator=estimator, method='sigmoid', cv=5)
         self.clf.fit(X, y)
